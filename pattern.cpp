@@ -9,6 +9,7 @@ void pattern(double alto, double ancho){
     double radius;
     double radiusO;
     double desplAlto;
+    double desplAncho;
     double x, y;
     int suma = alto/4;      //para sumarle a los rangos
     int rango1I = 0;         //rangos de las filas de cada cuarto (para partir los círculos)
@@ -40,8 +41,9 @@ void pattern(double alto, double ancho){
         }
     }
     */
-    radius = alto*0.375 + 5;  //el +5 es por el comienzo del ciclo, que se resta 5, entonces para que el radio quede bien de igual forma
+    radius = alto*0.375;  //el +5 es por el comienzo del ciclo, que se resta 5, entonces para que el radio quede bien de igual forma
     radiusO = radius;
+    radius += 5;
     for(int reductor = 0;reductor <= radius; reductor+=5){ //reductor <= radius-10
         radius -= 5;
         for(double t = 0.0; t < (6.3)*10; t += 0.1){
@@ -61,11 +63,13 @@ void pattern(double alto, double ancho){
     rango2I += suma;
     rango2F += suma;
     desplAlto = alto * 0.25;
+    desplAncho = ancho/2 - radius;
+    radius += 5;
     for(int reductor = 0;reductor <= radius; reductor+=5){ //reductor <= radius-10
         radius -= 5;
         for(double t = 0.0; t < (6.3)*10; t += 0.1){
             x = round(radius * sin(t) + radius) + desplAlto;
-            y = round(radius * cos(t) + radius);
+            y = round(radius * cos(t) + radius) + desplAncho;
             if(x+reductor<alto && y+reductor<ancho){
                 if(x+reductor >= rango1I && x+reductor < rango1F ||
                    x+reductor >= rango2I && x+reductor < rango2F){

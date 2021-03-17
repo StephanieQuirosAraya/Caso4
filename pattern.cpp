@@ -26,16 +26,15 @@ void pattern(double alto, double ancho){
         for(double angulo = 0.0 ; angulo < 6.3*10 ; angulo+=0.1 ){
             x = round(radio * cos(angulo))  + desplazamX;
             y = round(radio * sin(angulo))  + desplazamY;
-            if(  y < alto && y >= 0 && x < ancho && x >= 0  ){
-                if(  y >= rango1I && y < rango1F || y >= rango2I && y < rango2F  ){
-                    circulo[y][x] = '*';
-                }
-                if(  (y+suma >= rango1I+suma && y+suma < rango1F+suma) || (y+suma >= rango2I+suma && y+suma < alto)  ){
-                    y += suma;
-                    x += (ancho/3);
-                    if( x >= 0 && x < ancho )
-                        circulo[y][x] = '*';
-                }
+            if(  (y >= rango1I && y < rango1F || y >= rango2I && y < rango2F)   &&   x < ancho && x >= 0  ){
+                circulo[y][x] = '*';
+                
+            }
+            if(  ( (y+suma >= rango1I+suma && y+suma < rango1F+suma) || (y+suma >= rango2I+suma && y+suma < alto) )
+                    && x+(ancho/3) >= 0 && x+(ancho/3) < ancho ){
+                y += suma;
+                x += (ancho/3);
+                circulo[y][x] = '*';
             }
         }
         radio += 5;

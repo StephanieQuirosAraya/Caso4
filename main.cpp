@@ -1,7 +1,7 @@
 # include "pattern.cpp"
 
 int main(){
-    pattern(100,120);
+    pattern(40,60);
     
     return 0;
 }

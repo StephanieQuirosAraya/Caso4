@@ -22,7 +22,7 @@ void pattern(double alto, double ancho){
     desplazamX = ancho/3;
     radio = desplazamY - 20;     //radio inicial
 
-    for( ; aumento <= ancho-desplazamX ; aumento+=5 ){
+    for( ; aumento <= ancho ; aumento+=5 ){
         for(double angulo = 0.0 ; angulo < 6.3*10 ; angulo+=0.1 ){
             x = round(radio * cos(angulo))  + desplazamX;
             y = round(radio * sin(angulo))  + desplazamY;

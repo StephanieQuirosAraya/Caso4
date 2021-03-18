@@ -3,9 +3,18 @@
 # include <algorithm>
 # include <tgmath.h> 
 
+# include <fstream>
+
 using namespace std;
 
-void pattern(double alto, double ancho){
+void txtMaker(string path, string content){
+    ofstream file;
+    file.open(path);
+    file << content;
+    file.close();
+}
+
+string pattern(double alto, double ancho){
     int radio;               //radio actual del circulo
     int desplazamX;           //desplazamiento para que se vean bonitos los circulos
     int desplazamY;
@@ -16,7 +25,7 @@ void pattern(double alto, double ancho){
     int rango1F = suma;
     int rango2I = rango1F + suma;
     int rango2F = rango2I + suma;
-    vector <vector<char> > circulo(alto, vector<char>(ancho,'-'));
+    string coordenadas ="";
 
     desplazamY = alto*0.375;    //-10 para que haga dos circulos mas al centro
     desplazamX = ancho/3;
@@ -27,25 +36,33 @@ void pattern(double alto, double ancho){
             x = round(radio * cos(angulo))  + desplazamX;
             y = round(radio * sin(angulo))  + desplazamY;
             if(  (y >= rango1I && y < rango1F || y >= rango2I && y < rango2F)   &&   x < ancho && x >= 0  ){
-                circulo[y][x] = '*';
+                coordenadas+=to_string(y)+","+to_string(x)+";";
+                
                 
             }
             if(  ( (y+suma >= rango1I+suma && y+suma < rango1F+suma) || (y+suma >= rango2I+suma && y+suma < alto) )
                     && x+(ancho/3) >= 0 && x+(ancho/3) < ancho ){
                 y += suma;
                 x += (ancho/3);
-                circulo[y][x] = '*';
+                coordenadas+=to_string(y)+","+to_string(x)+";";
+
             }
         }
         radio += 5;
     }
 
 
-    for(const auto& fila : circulo){    //itera las filas de la matriz
+    /*for(const auto& fila : circulo){    //itera las filas de la matriz
         string linea;                   
         for(auto caracter : fila){      //va uniendo los caracteres de la fila en un solo string
             linea += caracter;    
         }
         cout << linea << endl;          //imprime una fila
-    }
+    }*/
+    return coordenadas;
+}
+
+int main(){
+    txtMaker("C:/Users/Tefy/Desktop/Semestre 3/coordenadas.txt", pattern(120, 60));
+    return 0;
 }

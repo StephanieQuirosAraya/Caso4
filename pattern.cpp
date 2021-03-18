@@ -16,9 +16,10 @@ void txtMaker(string path, string content){
 
 string pattern(double alto, double ancho){
     int radio;               //radio actual del circulo
-    int desplazamX;           //desplazamiento para que se vean bonitos los circulos
+    int desplazamX;          //desplazamiento para que se vean bonitos los circulos
     int desplazamY;
     double x, y;             //coordenadas de cada punto creado
+
     int aumento = 0;         //aumento de las circunferencias
     int suma = alto/4;       //para sumarle a los rangos
     int rango1I = 0;         //rangos de las filas de cada cuarto (para partir los círculos)
@@ -27,9 +28,12 @@ string pattern(double alto, double ancho){
     int rango2F = rango2I + suma;
     string coordenadas ="";
 
-    desplazamY = alto*0.375;    //-10 para que haga dos circulos mas al centro
-    desplazamX = ancho/3;
-    radio = desplazamY - 20;     //radio inicial
+
+
+    desplazamY = alto*0.375; //--> 2     //
+    desplazamX = ancho/3; //--> 2        //desplazamiento para los cuartos pares
+    radio = desplazamY-20; //--> 2       //radio inicial
+
 
     for( ; aumento <= ancho ; aumento+=5 ){
         for(double angulo = 0.0 ; angulo < 6.3*10 ; angulo+=0.1 ){
@@ -46,9 +50,10 @@ string pattern(double alto, double ancho){
                 x += (ancho/3);
                 coordenadas+=to_string(y)+","+to_string(x)+";";
 
+
             }
         }
-        radio += 5;
+        radio += 5;//--> 2
     }
 
 

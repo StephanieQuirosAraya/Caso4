@@ -3,16 +3,19 @@
 # include "printCircles.cpp"
 int main(){
     
-    list<int> *a;
-    pattern(a, 40,60);
-    //printCircles(a, 40, 60);
+    list<int> coordenadas;               //lista donde se guardan las coordenadas de los puntos.
 
-for(int i = 0; i < 100; i++){
-    cout << a->front() << ", ";
-    a->pop_front();
-    cout << a->front() << endl;
-    a->pop_front();
-}
+    cout << "Primera prueba:" << endl;
+    coordenadas = pattern(40,60);        //pattern retorna una lista con las coordenadas x,y de los puntos que forman las circunferencias.      
+    printCircles(coordenadas, 40, 60);   //imprime los puntos de los circulos. Debe recibir la lista de coordenadas y el alto y ancho
+                                         //en el que se va a desplegar.
+
+    cout << endl;
+
+    cout << "Segunda prueba:" << endl;
+    coordenadas = pattern(141, 115);
+    printCircles(coordenadas, 141, 115);
+
     
     return 0;
 }

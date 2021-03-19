@@ -15,15 +15,15 @@ Entradas:
 Salidas: impresión en consola del patrón.
 */
 
-void printCircles(list<int> * pCoord, int alto, int ancho){
-    vector <vector<char> > circulo(alto, vector<char>(ancho,'-'));
+void printCircles(list<int> pCoord, int alto, int ancho){
+    vector <vector<char> > circulo(alto, vector<char>(ancho,' '));
     int x, y;
-    int len = pCoord->size();
+    int len = pCoord.size();
     for(int i = 0; i < len; i+=2){
-        x = pCoord->front();
-        pCoord->pop_front();
-        y = pCoord->front();
-        pCoord->pop_front();
+        x = pCoord.front();
+        pCoord.pop_front();
+        y = pCoord.front();
+        pCoord.pop_front();
         circulo[y][x] = '*';
     }
     for(const auto& fila : circulo){    //itera las filas de la matriz

@@ -3,12 +3,16 @@
 # include "printCircles.cpp"
 int main(){
     
-    string a = pattern(40,60);
-    //cout << a << endl;
-    printCircles(a, 40, 60);
+    list<int> *a;
+    pattern(a, 40,60);
+    //printCircles(a, 40, 60);
 
-    //patternO(60,120);
-
+for(int i = 0; i < 100; i++){
+    cout << a->front() << ", ";
+    a->pop_front();
+    cout << a->front() << endl;
+    a->pop_front();
+}
     
     return 0;
 }

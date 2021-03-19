@@ -9,7 +9,7 @@
 using namespace std;
 
 
-list <int> * pattern(int alto, int ancho){
+void pattern(list<int> *coordenadas, int alto, int ancho){
     int radio;                      //radio actual del circulo
     int desplazamX;                 //desplazamiento para que se vean bonitos los circulos
     int desplazamY;
@@ -21,30 +21,31 @@ list <int> * pattern(int alto, int ancho){
     int rango1F = suma;  // -->+1           //rangos de las filas de cada cuarto (para partir los círculos)
     int rango2I = rango1F + suma; // -->+2
     int rango2F = rango2I + suma; // -->+2
-    list<int> coordenadas; // -->+1
 
     desplazamY = alto*0.375;  // -->+2      //desplazamiento de alto
     desplazamX = ancho/3;     // -->+2      //desplazamiento para los cuartos pares
     radio = desplazamY-20;    // -->+2      //radio inicial
-
+    cout << "va a entrar al ciclo" << endl;
     for( ; aumento <= ancho ; aumento+=5){ // -->+3
+    cout << "circunferencia" << endl;
         for(double angulo = 0.0 ; angulo < radianes ; angulo+=0.1 ){ // -->+4
             x = round(radio * cos(angulo))  + desplazamX; // -->+7
             y = round(radio * sin(angulo))  + desplazamY; // -->+7
             y2 = y + suma; // -->+2
             x2 = x + desplazamX; // -->+2
             if(  ( y >= 0 && y < rango1F || y >= rango2I && y < rango2F )   &&   x < ancho && x >= 0  ){ // -->+11
-                coordenadas.push_back(x); // -->+2
-                coordenadas.push_back(y); // -->+2
+            cout << "guardo 1 o 3" << endl;
+                coordenadas->push_back(x); // -->+2
+                coordenadas->push_back(y); // -->+2
+                cout << "guardo 1 o 3" << endl;
             }
             if(  ( y2 >= rango1F && y2 < rango2I || y2 >= rango2F && y2 < alto ) && x2 >= 0 && x2 < ancho ) { // -->+11
-                coordenadas.push_back(x2); // -->+2
-                coordenadas.push_back(y2); // -->+2
+            cout << "guardo 2 o 4" << endl;
+                coordenadas->push_back(x2); // -->+2
+                coordenadas->push_back(y2); // -->+2
             }
         }
         radio += 5; // --> +2
     } //f(n) = 53(n*radianes)
-
-    return &coordenadas; // --> +1
-} // total = 68
+} // total = 66
 

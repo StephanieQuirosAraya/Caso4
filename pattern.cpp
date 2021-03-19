@@ -2,54 +2,49 @@
 # include <vector>
 # include <algorithm>
 # include <tgmath.h> 
+# include <list>
 # include <fstream>
+
 
 using namespace std;
 
-void txtMaker(string path, string content){
-    ofstream file;
-    file.open(path);
-    file << content;
-    file.close();
-}
 
-string pattern(int alto, int ancho){
+list <int> * pattern(int alto, int ancho){
     int radio;                      //radio actual del circulo
     int desplazamX;                 //desplazamiento para que se vean bonitos los circulos
     int desplazamY;
     int x, y, x2, y2;               //coordenadas de cada punto creado
-    int aumento = 0;                //aumento de las circunferencias
-    double radianes = 6.3*ancho/10;
-    int suma = alto/4;              //para sumarle a los rangos
+    int aumento = 0;     // -->+1           //aumento de las circunferencias
+    double radianes = 6.3*ancho/10; // -->+3
+    int suma = alto/4;   // -->+1         //para sumarle a los rangos
 
-    int rango1F = suma;             //rangos de las filas de cada cuarto (para partir los círculos)
-    int rango2I = rango1F + suma;
-    int rango2F = rango2I + suma;
-    string coordenadas ="";
+    int rango1F = suma;  // -->+1           //rangos de las filas de cada cuarto (para partir los círculos)
+    int rango2I = rango1F + suma; // -->+2
+    int rango2F = rango2I + suma; // -->+2
+    list<int> coordenadas; // -->+1
 
-    desplazamY = alto*0.375;        //desplazamiento de alto
-    desplazamX = ancho/3;           //desplazamiento para los cuartos pares
-    radio = desplazamY-20;          //radio inicial
+    desplazamY = alto*0.375;  // -->+2      //desplazamiento de alto
+    desplazamX = ancho/3;     // -->+2      //desplazamiento para los cuartos pares
+    radio = desplazamY-20;    // -->+2      //radio inicial
 
-    for( ; aumento <= ancho ; aumento+=5 ){
-        for(double angulo = 0.0 ; angulo < radianes ; angulo+=0.1 ){
-            x = round(radio * cos(angulo))  + desplazamX;
-            y = round(radio * sin(angulo))  + desplazamY;
-            y2 = y + suma;
-            x2 = x + desplazamX;
-            if(  ( y >= 0 && y < rango1F || y >= rango2I && y < rango2F )   &&   x < ancho && x >= 0  ){
-                coordenadas+=to_string(y)+","+to_string(x)+";";
+    for( ; aumento <= ancho ; aumento+=5){ // -->+3
+        for(double angulo = 0.0 ; angulo < radianes ; angulo+=0.1 ){ // -->+4
+            x = round(radio * cos(angulo))  + desplazamX; // -->+7
+            y = round(radio * sin(angulo))  + desplazamY; // -->+7
+            y2 = y + suma; // -->+2
+            x2 = x + desplazamX; // -->+2
+            if(  ( y >= 0 && y < rango1F || y >= rango2I && y < rango2F )   &&   x < ancho && x >= 0  ){ // -->+11
+                coordenadas.push_back(x); // -->+2
+                coordenadas.push_back(y); // -->+2
             }
-            if(  ( y2 >= rango1F && y2 < rango2I || y2 >= rango2F && y2 < alto ) && x2 >= 0 && x2 < ancho ) {
-                coordenadas+=to_string(y2)+","+to_string(x2)+";";
+            if(  ( y2 >= rango1F && y2 < rango2I || y2 >= rango2F && y2 < alto ) && x2 >= 0 && x2 < ancho ) { // -->+11
+                coordenadas.push_back(x2); // -->+2
+                coordenadas.push_back(y2); // -->+2
             }
         }
-        radio += 5;
-    }
-    return coordenadas;
-}
-/*
-int main(){
-    txtMaker("C:/Users/Tefy/Desktop/Semestre 3/coordenadas.txt", pattern(120, 60));
-    return 0;
-}*/
+        radio += 5; // --> +2
+    } //f(n) = 53(n*radianes)
+
+    return &coordenadas; // --> +1
+} // total = 68
+

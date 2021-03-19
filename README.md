@@ -4,4 +4,4 @@ En el presente algoritmo para lograr generar el patrón requerido se partió de 
 
 La n del algoritmo es ancho ya que me da la cantidad de iteraciones que hace el algoritmo.
 
-Al hacer un análisis en general del algoritmo se llega a que f(n) = 67(n*(6.3*n/10)) y la O(n).
+Al hacer un análisis en general del algoritmo se llega a que f(n) = 53(n*radianes) y la O(n).

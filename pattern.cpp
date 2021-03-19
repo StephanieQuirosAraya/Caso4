@@ -43,7 +43,7 @@ list <int> * pattern(double alto, double ancho){
             }
         }
         radio += 5; // --> +2
-    } // 53(n*(6.3*n/10))
+    } //f(n) = 53(n*radianes)
 
     return &coordenadas; // --> +1
 } // total = 68

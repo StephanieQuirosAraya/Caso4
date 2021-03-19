@@ -2,7 +2,6 @@
 # include <vector>
 # include <algorithm>
 # include <tgmath.h> 
-
 # include <fstream>
 
 using namespace std;
@@ -14,7 +13,7 @@ void txtMaker(string path, string content){
     file.close();
 }
 
-string pattern(double alto, double ancho){
+string pattern(int alto, int ancho){
     int radio;                      //radio actual del circulo
     int desplazamX;                 //desplazamiento para que se vean bonitos los circulos
     int desplazamY;
@@ -47,15 +46,6 @@ string pattern(double alto, double ancho){
         }
         radio += 5;
     }
-
-
-    /*for(const auto& fila : circulo){    //itera las filas de la matriz
-        string linea;                   
-        for(auto caracter : fila){      //va uniendo los caracteres de la fila en un solo string
-            linea += caracter;    
-        }
-        cout << linea << endl;          //imprime una fila
-    }*/
     return coordenadas;
 }
 /*

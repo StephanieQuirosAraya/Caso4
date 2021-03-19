@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void patternO(double alto, double ancho){
+void patternO(int alto, int ancho){
     int radio;               //radio actual del circulo
     int desplazamX;          //desplazamiento para que se vean bonitos los circulos
     int desplazamY;

@@ -32,6 +32,7 @@ list<int> pattern(int alto, int ancho){
     int rango2I = rango1F + suma; // -->+2
     int rango2F = rango2I + suma; // -->+2
     
+
     desplazamY = alto*0.375;  // -->+2      //desplazamiento de alto
     desplazamX = ancho/3;     // -->+2      //desplazamiento para los cuartos pares
     radio = desplazamY-(alto/4);    // -->+2      //radio inicial
